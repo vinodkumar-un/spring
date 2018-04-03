@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="stockAnalyzer" class="com.ifmi.beans.StockAnalyzer">
+		<property name="stockManager" ref="stockManager" />
+	</bean>
+
+	<bean id="bseStockTradeServiceLocator" class="com.ifmi.beans.BseStockTradeServiceLocator" />
+
+	<bean id="stockManager" factory-bean="bseStockTradeServiceLocator"
+		factory-method="locateStockManager" />
+
+
+</beans>
+
+
+
+
+
+
+

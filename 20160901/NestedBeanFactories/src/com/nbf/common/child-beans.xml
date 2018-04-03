@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="passport" class="com.nbf.beans.Passport">
+		<property name="passportNo" value="p3033" />
+		<property name="holderName" value="John" />
+		<property name="address" ref="address">
+			<!-- <ref bean="address" /> -->
+		</property>
+	</bean>
+
+	<!-- <bean id="address" class="com.nbf.beans.Address">
+		<property name="addressLine1" value="S.R Nagar" />
+		<property name="addressLine2" value="Umeshchandra Statue" />
+		<property name="city" value="Hyderabad" />
+		<property name="state" value="TS" />
+		<property name="zip" value="3535" />
+		<property name="country" value="India" />
+	</bean> -->
+
+</beans>

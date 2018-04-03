@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="motor" class="com.dc.beans.Motor" dependency-check="all">
+		<property name="id" value="35" />
+		<property name="type" value="Electronic" />
+		<property name="chain" ref="chain" />
+	</bean>
+	<bean id="chain" class="com.dc.beans.Chain" />
+</beans>
+
+
+
+
+
+
+

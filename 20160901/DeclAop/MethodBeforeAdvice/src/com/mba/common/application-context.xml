@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	<bean id="loanManager" class="com.mba.beans.LoanManager" />
+	<bean id="securityHolder" class="com.mba.util.SecurityHolder"
+		factory-method="getInstance" />
+
+	<bean id="preMonitoringAspect" class="com.mba.aspects.PreMonitoringAspect">
+		<property name="securityHolder" ref="securityHolder" />
+	</bean>
+	<aop:config>
+		<aop:pointcut expression="execution(* com.mba.beans.LoanManager.*(..))"
+			id="preMonitoringPointcut" />
+		<aop:aspect ref="preMonitoringAspect">
+			<aop:before method="authenticate" pointcut-ref="preMonitoringPointcut" />
+			<aop:before method="audit" pointcut-ref="preMonitoringPointcut" />
+		</aop:aspect>
+	</aop:config>
+
+
+</beans>
+
+
+
+

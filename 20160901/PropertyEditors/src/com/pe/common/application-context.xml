@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="profile" class="com.pe.beans.Profile">
+		<property name="id" value="39" />
+		<property name="name" value="john" />
+		<property name="dateOfBirth" value="10/01/2016" />
+		<property name="picture" value="C:/db.properties" />
+		<property name="webSite" value="http://www.google.co.in" />
+		<property name="friends" value="Rakesh,Raghu,Ravi" />
+	</bean>
+
+
+</beans>

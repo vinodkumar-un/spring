@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="errors" />
+	</bean>
+
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/journeys.htm">listJourneysController</prop>
+				<prop key="/edit-journey.htm">editJourneyFormController</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="listJourneysController" class="com.redbus.controller.ListJouneysController">
+		<property name="manageJourneyService" ref="manageJourneyService" />
+	</bean>
+
+	<bean id="editJourneyFormController" class="com.redbus.controller.EditJourneyFormController">
+		<property name="commandClass" value="com.redbus.command.JourneyCommand" />
+		<property name="commandName" value="journey" />
+		<property name="formView" value="edit-journey" />
+		<property name="manageJourneyService" ref="manageJourneyService" />
+		<property name="validator" ref="journeyCommandValidator" />
+	</bean>
+
+	<bean id="journeyCommandValidator" class="com.redbus.validator.JourneyCommandValidator" />
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	<bean id="keyGenerator" class="com.ara.beans.KeyGenerator" />
+	<bean id="shaKeyGenerator" class="com.ara.beans.SHAKeyGenerator" />
+	<bean id="keyCheckAspect" class="com.ara.aspect.KeyCheckAspect" />
+
+	<aop:config>
+		<aop:pointcut
+			expression="execution(* com.ara.beans.KeyGenerator.*(..)) or execution(* com.ara.beans.SHAKeyGenerator.generateSHASingleKey(int))"
+			id="pc1" />
+		<aop:aspect ref="keyCheckAspect">
+			<aop:after-returning method="validateKey"
+				pointcut-ref="pc1" returning="ret" />
+		</aop:aspect>
+	</aop:config>
+</beans>
+
+
+
+

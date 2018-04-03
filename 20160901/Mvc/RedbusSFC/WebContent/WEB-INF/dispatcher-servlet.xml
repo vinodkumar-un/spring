@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="errors" />
+	</bean>
+
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/add-journey.htm">addJourneyFormController</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="addJourneyFormController" class="com.rbsfc.controller.AddJourneyFormController">
+		<property name="formView" value="add-journey" />
+		<property name="commandClass" value="com.rbsfc.command.JourneyCommand" />
+		<property name="commandName" value="journey" />
+		<property name="validator" ref="journeyCommandValidator" />
+	</bean>
+
+	<bean id="journeyCommandValidator" class="com.rbsfc.validator.JourneyCommandValidator" />
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+</beans>
+
+
+
+
+
+
+

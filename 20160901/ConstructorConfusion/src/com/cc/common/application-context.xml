@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="person" class="com.cc.beans.Person">
+		<constructor-arg value="10" type="int" />
+	</bean>
+
+	<bean id="product" class="com.cc.beans.Product">
+		<constructor-arg value="Mobile" />
+		<constructor-arg value="10" index="0"/>
+	</bean>
+	
+	<bean id="warehouse" class="com.cc.beans.Warehouse">
+		<constructor-arg value="Main-Warehouse" name="warehouseName"/>
+		<constructor-arg value="3535" name="capacity"/>
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
